@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// Start import react router dom
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// End import react router dom
+// Start Import Pages
+import Home from "./pages/Home";
+import ProductDetails from "./pages/ProductDetails";
+// End Import Pages
+// Start Componets
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
+
+// End Componets
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="overFlow-hidden">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+        </Routes>
+        <Sidebar />
+        <Footer />
+      </Router>
     </div>
   );
 }
